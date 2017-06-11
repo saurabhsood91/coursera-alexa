@@ -1,0 +1,9 @@
+welcome: Welcome to Course Search. You can start by asking me to look for courses, or ask for help. What would you like to do?
+
+empty: I did not get any search query for courses. Please provide a search query. What type of courses would you like to search for?
+
+results: I found {{ number_of_results }} results. Would you like to hear the first one?
+
+course_name: There is a {{ course_name }} course on Coursera. Would you like to hear the next one?
+
+exit: Thank you for using Course Search.
