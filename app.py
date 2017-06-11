@@ -13,9 +13,9 @@ def _get_course_names(course):
 @ask.launch
 def new_ask():
     welcome = render_template('welcome')
-    reprompt = render_template('welcome')
+    empty = render_template('empty')
 
-    return question(welcome).reprompt(reprompt)
+    return question(welcome).reprompt(empty)
 
 
 @ask.intent('SearchCourseIntent')
@@ -50,6 +50,11 @@ def show_result():
 def close():
     result = render_template('exit')
     return statement(result)
+
+@ask.intent('AMAZON.HelpIntent')
+def help():
+    result = render_template('help')
+    return question(result)
 
 if __name__ == '__main__':
     app.run(debug=True)
