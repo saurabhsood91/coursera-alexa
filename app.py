@@ -17,6 +17,15 @@ def new_ask():
 
     return question(welcome).reprompt(empty)
 
+@ask.intent('AMAZON.StopIntent')
+def stop():
+    response = render_template('bye')
+    return statement(response)
+
+@ask.intent('AMAZON.CancelIntent')
+def stop():
+    response = render_template('bye')
+    return statement(response)
 
 @ask.intent('SearchCourseIntent')
 def search_course(query):
@@ -39,6 +48,11 @@ def search_course(query):
 
 @ask.intent('AMAZON.YesIntent')
 def show_result():
+    courses = session.attributes.get('results')
+    if not courses:
+        result = render_template('empty')
+        return question(result)
+
     current_index = session.attributes['index']
     course_name = session.attributes['results'][current_index]
     session.attributes['index'] += 1
